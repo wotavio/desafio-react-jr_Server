@@ -1,4 +1,4 @@
-const routerProduto = require("./produtoRoute")
+const routerProduto = require("./produtoRoute");
 module.exports = (app) => {
-    app.use(routerProduto)
+    app.use(routerProduto);
 };

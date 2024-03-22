@@ -5,6 +5,9 @@ const router = require("./../Router/index");
 const conexao = require("./../conexao/conexao");
 const tabela = require("./../conexao/tabela");
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 tabela.init(conexao);
 router(app);
 

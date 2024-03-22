@@ -1,36 +1,39 @@
 const produtoModel = require("./../models/models");
 class ProdutoController {
-    buscar(req, res) {
-        const listaProduto = produtoModel.listar();
-        return listaProduto 
-          .then((produtos) => res.status(200).json(produtos))
-          .catch((error) => res.status(400).json(error.message));
+  async buscar() {
+      try {
+          const listaProduto = await produtoModel.listar();
+          return listaProduto; // Apenas retorna os dados
+      } catch (error) {
+          throw error; // Lança o erro para ser capturado pelo router
       }
-      criar(req, res) {
-        const novoProduto = req.body;
-        const produto = produtoModel.criar(novoProduto);
-        return produto
-          .then((produtoCriado) => res.status(201).json(produtoCriado))
-          .catch((error) => res.status(400).json(error.message));
+  }
+
+  async criar(dadosProduto) {
+      try {
+          const produtoCriado = await produtoModel.criar(dadosProduto);
+          return produtoCriado; // Apenas retorna os dados
+      } catch (error) {
+          throw error; // Lança o erro para ser capturado pelo router
       }
-      atualizar(req, res) {
-        const { id } = req.params;
-        const produtoAtualizado = req.body;
-        const produto = produtoModel.atualizar(produtoAtualizado, id);
-        return produto
-          .then((resultprodutoAtualizado) =>
-            res.status(200).json(resultprodutoAtualizado)
-          )
-          .catch((error) => res.status(400).json(error.message));
+  }
+
+  async atualizar(id, dadosProduto) {
+      try {
+          const produtoAtualizado = await produtoModel.atualizar(id, dadosProduto);
+          return produtoAtualizado; // Apenas retorna os dados
+      } catch (error) {
+          throw error; // Lança o erro para ser capturado pelo router
       }
-      deletar(req, res) {
-        const { id } = req.params;
-        const produto = produtoModel.delete(id);
-        return produto
-          .then((resultprodutoDeletado) =>
-            res.status(200).json(resultprodutoDeletado)
-          )
-          .catch((error) => res.status(400).json(error.message));
+  }
+
+  async deletar(id) {
+      try {
+          await produtoModel.deletar(id);
+          return { message: "Produto deletado com sucesso" }; // Retorna uma mensagem de sucesso
+      } catch (error) {
+          throw error; // Lança o erro para ser capturado pelo router
+      }
   }
 }
 

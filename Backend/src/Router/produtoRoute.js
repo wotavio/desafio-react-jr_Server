@@ -1,23 +1,45 @@
-const {Router} = require("express");
+const { Router } = require("express");
 const router = Router();
-const produtoController = require("../Controllers/Controllers")
+const produtoController = require("../Controllers/Controllers");
 
-router.get("/produtos", (req, res) =>{
-    const listaProduto = produtoController.buscar();
-    listaProduto.then((produtos) => res.status(200).json(produtos))
-    .catch((error) => res.status(400).json(error.message));
+router.get("/produtos", async (req, res) => {
+    try {
+        const produtos = await produtoController.buscar();
+        res.status(200).json(produtos);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
 });
-router.post("/produtos", (req, res) =>{
-    const resposta = produtoController.criar();
-    res.send(resposta)
+
+router.post("/produtos", async (req, res) => {
+    try {
+        const novoProduto = req.body;
+        const produtoCriado = await produtoController.criar(novoProduto);
+        res.status(201).json(produtoCriado);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
 });
-router.put("/produtos/:id", (req, res) =>{
-    const resposta = produtoController.atualizar(id);
-    res.send(resposta)
+
+router.put("/produtos/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const dadosAtualizacao = req.body;
+        const produtoAtualizado = await produtoController.atualizar(id, dadosAtualizacao);
+        res.status(200).json(produtoAtualizado);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
 });
-router.delete("/produtos/:id", (req, res) =>{
-    const resposta = produtoController.deletar(id);
-    res.send(resposta)
+
+router.delete("/produtos/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const resposta = await produtoController.deletar(id);
+        res.status(200).json(resposta);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
 });
 
 module.exports = router;
