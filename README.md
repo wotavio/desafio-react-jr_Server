@@ -1,4 +1,8 @@
 # Desafio React Jr
+![image](https://github.com/wotavio/desafio-react-jr_Server/assets/83969703/91545332-d16c-4f8e-bba9-0657b0809ad5)
+![image](https://github.com/wotavio/desafio-react-jr_Server/assets/83969703/63fd26bc-0cb9-4812-a32e-0645c1209817)
+![image](https://github.com/wotavio/desafio-react-jr_Server/assets/83969703/eacb6b15-09e3-4185-9225-479f2532b6d9)
+
 
 ## Passos para realizar o desafio
 
