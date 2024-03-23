@@ -38,9 +38,9 @@ class ProdutoController {
   async deletar(id) {
       try {
           await produtoModel.deletar(id);
-          return { message: "Produto deletado com sucesso" }; // Retorna uma mensagem de sucesso
+          return { message: "Produto deletado com sucesso" }; 
       } catch (error) {
-          throw error; // Lança o erro para ser capturado pelo router
+          throw error; 
       }
   }
 }
