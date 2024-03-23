@@ -8,6 +8,14 @@ class ProdutoController {
           throw error; // Lança o erro para ser capturado pelo router
       }
   }
+  async buscarDetalhes(id) {
+    try {
+        const detalhesProduto = await produtoModel.listar2(id);
+        return detalhesProduto;
+    } catch (error) {
+        throw error;
+    }
+}
 
   async criar(dadosProduto) {
       try {
