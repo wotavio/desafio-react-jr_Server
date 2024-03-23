@@ -3,9 +3,9 @@ class ProdutoController {
   async buscar() {
       try {
           const listaProduto = await produtoModel.listar();
-          return listaProduto; // Apenas retorna os dados
+          return listaProduto; 
       } catch (error) {
-          throw error; // Lança o erro para ser capturado pelo router
+          throw error; 
       }
   }
   async buscarDetalhes(id) {
@@ -20,18 +20,18 @@ class ProdutoController {
   async criar(dadosProduto) {
       try {
           const produtoCriado = await produtoModel.criar(dadosProduto);
-          return produtoCriado; // Apenas retorna os dados
+          return produtoCriado;
       } catch (error) {
-          throw error; // Lança o erro para ser capturado pelo router
+          throw error; 
       }
   }
 
   async atualizar(id, dadosProduto) {
       try {
           const produtoAtualizado = await produtoModel.atualizar(id, dadosProduto);
-          return produtoAtualizado; // Apenas retorna os dados
+          return produtoAtualizado;
       } catch (error) {
-          throw error; // Lança o erro para ser capturado pelo router
+          throw error; 
       }
   }
 
